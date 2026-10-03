@@ -1,0 +1,84 @@
+/* =========================================================
+   Admonitions CSS
+   ========================================================= */
+
+.admonition {
+  margin: 1.5em 0;
+  padding: .75em 1em .75em 1.2em;
+  border-left: 4px solid #ccc;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+@media (prefers-color-scheme: dark) {
+  .admonition { background-color: rgba(255, 255, 255, 0.04); }
+}
+
+.admonition-title {
+  font-weight: 700;
+  margin: 0 0 .4em 0;
+  display: flex;
+  align-items: center;
+  gap: .4em;
+}
+
+.admonition > *:last-child { margin-bottom: 0; }
+
+/* note / info */
+.admonition.note,
+.admonition.info {
+  border-left-color: #0969da;
+  background-color: rgba(9, 105, 218, 0.06);
+}
+.admonition.note .admonition-title::before { content: "💡"; }
+.admonition.info .admonition-title::before { content: "💡"; }
+
+/* tip / success */
+.admonition.tip,
+.admonition.success {
+  border-left-color: #1a7f37;
+  background-color: rgba(26, 127, 55, 0.06);
+}
+.admonition.tip .admonition-title::before    { content: "✅"; }
+.admonition.success .admonition-title::before { content: "✅"; }
+
+/* warning / caution */
+.admonition.warning,
+.admonition.caution {
+  border-left-color: #9a6700;
+  background-color: rgba(154, 103, 0, 0.06);
+}
+.admonition.warning .admonition-title::before { content: "⚠️"; }
+.admonition.caution .admonition-title::before { content: "⚠️"; }
+
+/* danger / failure */
+.admonition.danger,
+.admonition.failure {
+  border-left-color: #cf222e;
+  background-color: rgba(207, 34, 46, 0.06);
+}
+.admonition.danger .admonition-title::before  { content: "🚨"; }
+.admonition.failure .admonition-title::before { content: "🚨"; }
+
+/* bug */
+.admonition.bug {
+  border-left-color: #cf222e;
+  background-color: rgba(207, 34, 46, 0.06);
+}
+.admonition.bug .admonition-title::before { content: "🐛"; }
+
+/* example */
+.admonition.example {
+  border-left-color: #8250df;
+  background-color: rgba(130, 80, 223, 0.06);
+}
+.admonition.example .admonition-title::before { content: "📋"; }
+
+/* quote / abstract */
+.admonition.quote,
+.admonition.abstract {
+  border-left-color: #6e7781;
+  background-color: rgba(110, 119, 129, 0.06);
+}
+.admonition.quote .admonition-title::before    { content: "📝"; }
+.admonition.abstract .admonition-title::before { content: "📝"; }

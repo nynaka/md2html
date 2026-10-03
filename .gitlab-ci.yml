@@ -1,0 +1,33 @@
+stages:
+  - lint
+  - test
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  paths:
+    - .cache/pip
+    - .tox/
+
+default:
+  image: python:3.13-slim
+  before_script:
+    - pip install tox --quiet
+
+lint:
+  stage: lint
+  script:
+    - tox -e lint
+
+test:
+  stage: test
+  script:
+    - tox -e py3
+  coverage: '/TOTAL\s+\d+\s+\d+\s+(\d+%)/'
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
+    expire_in: 1 week

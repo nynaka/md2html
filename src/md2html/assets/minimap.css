@@ -1,0 +1,134 @@
+/* =========================================================
+   Minimap / TOC Sidebar Styles
+   ========================================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  box-sizing: border-box;
+}
+
+.app-container > .markdown-body {
+  flex: 1 1 0%;
+  min-width: 0;
+  max-width: 920px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.app-container:not(:has(.minimap-wrapper)) > .markdown-body,
+.app-container > .markdown-body:only-child {
+  margin: 0 auto;
+}
+
+/* Minimap Sidebar */
+.minimap-wrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 24px;
+  width: 260px;
+  margin-left: 36px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  align-self: flex-start;
+}
+
+.minimap {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 24px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--color-canvas-subtle, rgba(246, 248, 250, 0.85));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border-muted, rgba(208, 215, 222, 0.6));
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+
+.minimap-list {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.minimap-item {
+  margin: 2px 0 !important;
+  padding: 0 !important;
+  list-style-type: none !important;
+}
+
+.minimap-item a {
+  display: block;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-fg-muted, #57606a);
+  text-decoration: none !important;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border-left: 2px solid transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.minimap-item a:hover {
+  color: var(--color-accent-fg, #0969da);
+  background-color: var(--color-neutral-muted, rgba(175, 184, 193, 0.2));
+}
+
+.minimap-item a.active {
+  color: var(--color-accent-fg, #0969da);
+  font-weight: 600;
+  background-color: var(--color-neutral-muted, rgba(175, 184, 193, 0.25));
+  border-left-color: var(--color-accent-emphasis, #0969da);
+}
+
+/* Indent levels h1 ~ h6 */
+.minimap-item.level-1 a { padding-left: 8px; }
+.minimap-item.level-2 a { padding-left: 18px; }
+.minimap-item.level-3 a { padding-left: 28px; }
+.minimap-item.level-4 a { padding-left: 38px; }
+.minimap-item.level-5 a { padding-left: 48px; }
+.minimap-item.level-6 a { padding-left: 58px; }
+
+/* Custom Scrollbar for Minimap */
+.minimap::-webkit-scrollbar {
+  width: 4px;
+}
+.minimap::-webkit-scrollbar-thumb {
+  background: var(--color-border-default, #d0d7de);
+  border-radius: 4px;
+}
+
+/* Responsive view */
+@media (max-width: 1024px) {
+  .app-container {
+    flex-direction: column-reverse;
+    padding: 16px;
+  }
+  .minimap-wrapper {
+    position: static;
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+  .minimap {
+    position: static;
+    max-height: 240px;
+  }
+}
